@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/responsivelayout.dart';
 
@@ -21,14 +20,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ResponsiveLayout(
-        mobile: const Center(child: Text("IamPhone")),
-        tab: const Center(child: Text("IamTab")),
-        desktop: Center(
+    return ResponsiveLayout(
+      mobile: const Center(child: Text("IamPhone")),
+      tab: const Center(child: Text("IamTab")),
+      desktop: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -42,12 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
