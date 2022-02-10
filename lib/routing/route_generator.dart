@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/error_page.dart';
-import 'package:flutter_app/pages/pages.dart';
+
+import '../pages/pages.dart';
 import 'package:flutter_app/routing/routes.dart';
 
 class RouteGenerator {
@@ -8,9 +8,11 @@ class RouteGenerator {
     var args = settings.arguments;
     switch (settings.name) {
       case '/':
-        return PageRouteBuilder(pageBuilder: (_, __, ___) => const MyHomePage(title: "Homepage"));
+        return PageRouteBuilder(pageBuilder: (_, __, ___) => const LoginPage());
       case Routes.homePage:
-        return PageRouteBuilder(pageBuilder: (_, __, ___) => const MyHomePage(title: "Homepage"));
+        return PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const MyHomePage(title: "Navigated Homepage"),
+            settings: const RouteSettings(name: Routes.homePage));
       default:
         return PageRouteBuilder(pageBuilder: (_, __, ___) => const ErrorPage());
     }
