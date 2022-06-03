@@ -8,7 +8,7 @@ class GetItRegistration {
     GetIt.I.allowReassignment = true;
     await GetStorage.init();
     GetIt.I.registerSingleton<AppSizes>(AppSizes(), signalsReady: true);
-    AppSizes sizes = AppPhoneSizes();
+    AppSizes sizes = AppSizes();
     GetIt.I.registerSingleton<AppSizes>(sizes);
     GetIt.I.registerSingleton<AppTheme>(AppTheme());
   }

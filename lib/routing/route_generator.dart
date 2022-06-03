@@ -5,9 +5,10 @@ import 'package:flutter_app/routing/routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    var args = settings.arguments;
-    switch (settings.name) {
-      case '/':
+    var path = settings.name;
+    if (settings.name == '/') path = Routes.loginPage;
+    switch (path) {
+      case Routes.loginPage:
         return PageRouteBuilder(pageBuilder: (_, __, ___) => const LoginPage());
       case Routes.homePage:
         return PageRouteBuilder(

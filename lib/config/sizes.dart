@@ -1,45 +1,31 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppSizes extends DefaultSizes with CommonSizes {
+class AppSizes extends DefaultSizes {
   @override
   double get size => throw UnimplementedError();
+
+  @override
+  double responsive(double d) => ScreenUtil().setSp(d);
+  @override
+  double responsiveH(double d) => ScreenUtil().setHeight(d);
+  @override
+  double responsiveW(double d) => ScreenUtil().setWidth(d);
+  @override
+  double sw(double d) => ScreenUtil().screenWidth * d;
+  @override
+  double sh(double d) => ScreenUtil().screenHeight * d;
+  @override
+  double ash(double d) => (ScreenUtil().screenHeight - statusBarHeight) * d;
 }
 
 abstract class DefaultSizes {
   double get size;
-}
-
-mixin CommonSizes {
-  @override
-  double get iconSize => 40.0;
-  double get tabletBreakpoint => 768.0;
-  double get deskTopBreakpoint => 1440.0;
-}
-
-abstract class PhoneSizes with CommonSizes implements DefaultSizes {}
-
-abstract class TabletSizes with CommonSizes implements DefaultSizes {
-  double get buttonHeight => 48.0;
-}
-
-abstract class WebSizes with CommonSizes implements DefaultSizes {
-  double get buttonHeight => 56.0;
-}
-
-class AppPhoneSizes extends PhoneSizes with CommonSizes implements AppSizes {
-  @override
-  double get size => throw UnimplementedError();
-}
-
-class AppTabletSizes extends TabletSizes with CommonSizes implements AppSizes {
-  @override
-  double get size => throw UnimplementedError();
-}
-
-class AppWebSizes extends WebSizes with CommonSizes implements AppSizes {
-  @override
-  Offset get leftNavMenuOffset => const Offset(26, 20);
-
-  @override
-  double get size => throw UnimplementedError();
+  double get screenBreakPoint => 1024.0;
+  double responsive(double d);
+  double responsiveH(double d);
+  double responsiveW(double d);
+  double sw(double d);
+  double sh(double d);
+  double ash(double d);
+  double get statusBarHeight => ScreenUtil().statusBarHeight;
 }

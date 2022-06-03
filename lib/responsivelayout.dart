@@ -5,22 +5,20 @@ import 'package:get_it/get_it.dart';
 
 class ResponsiveLayout extends StatelessWidget with _Helper {
   final Widget? mobile;
-  final Widget? tab;
-  final Widget? desktop;
-  const ResponsiveLayout({Key? key, this.mobile, this.tab, this.desktop})
-      : assert(mobile != null || tab != null || desktop != null),
+  final Widget? wide;
+
+  const ResponsiveLayout({Key? key, this.mobile, this.wide})
+      : assert(mobile != null || wide != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (_, constraints) {
       var widthContraints = constraints.maxWidth;
-      if (widthContraints < sizes.tabletBreakpoint) {
+      if (widthContraints < sizes.screenBreakPoint) {
         return mobile!;
-      } else if (widthContraints >= sizes.tabletBreakpoint && widthContraints < sizes.deskTopBreakpoint) {
-        return tab ?? mobile!;
       } else {
-        return desktop ?? mobile!;
+        return wide!;
       }
     });
   }

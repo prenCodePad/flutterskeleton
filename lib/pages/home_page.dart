@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/responsivelayout.dart';
 
-class MyHomePage extends StatefulWidget {
+import '../common/common.dart';
+
+class MyHomePage extends StatefulWidget with AppMixin {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
@@ -22,11 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: const Center(child: Text("IamPhone")),
-      tab: const Center(child: Text("IamTab")),
-      desktop: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
+      wide: Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

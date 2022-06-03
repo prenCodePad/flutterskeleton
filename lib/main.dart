@@ -1,12 +1,10 @@
 //Author Praveen Pilli.
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config/get_it_registrations.dart';
-import 'package:flutter_app/responsivelayout.dart';
 import 'package:flutter_app/routing/route_generator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
-import './pages/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
