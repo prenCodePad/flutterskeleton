@@ -7,5 +7,11 @@ class SignInController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void dispose() {
+    Get.delete<SignInController>();
+    super.dispose();
+  }
+
   updateIsLoggedIn(bool b) => isLoggedIn.value = b;
 }
