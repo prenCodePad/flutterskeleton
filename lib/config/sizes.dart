@@ -28,4 +28,10 @@ abstract class DefaultSizes {
   double sh(double d);
   double ash(double d);
   double get statusBarHeight => ScreenUtil().statusBarHeight;
+
+  double get buttonHeight => 48.0;
+  double get buttonRadius => 6.0;
+  double get buttonMinWidth => 90.0;
+  double get buttonHorizontalPadding => 16.0;
+  double get buttonTextFontSize => 16.0;
 }

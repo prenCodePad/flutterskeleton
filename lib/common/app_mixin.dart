@@ -1,4 +1,4 @@
-import 'package:flutter_app/controllers/home_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
@@ -10,4 +10,9 @@ mixin AppMixin {
   AppTheme get theme => GetIt.I<AppTheme>();
   SignInController get snc => Get.put(SignInController());
   HomeController get hc => Get.put(HomeController());
+
+  void logoutUser() {
+    Get.delete<SignInController>();
+    Get.delete<HomeController>();
+  }
 }

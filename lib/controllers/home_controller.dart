@@ -11,7 +11,6 @@ class HomeController extends GetxController {
 
   @override
   void dispose() {
-    Get.delete<HomeController>();
     super.dispose();
   }
 }

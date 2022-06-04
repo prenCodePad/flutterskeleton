@@ -9,7 +9,6 @@ class SignInController extends GetxController {
 
   @override
   void dispose() {
-    Get.delete<SignInController>();
     super.dispose();
   }
 

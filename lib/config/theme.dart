@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/config/sizes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme extends DefaultTheme {
+  AppTheme({required DefaultSizes sizes}) : super(sizes: sizes);
+
   Color get defaultFontColor => const Color(0xff1b1b1b);
   Color get defaultFontColor70 => const Color.fromRGBO(27, 27, 27, 0.7);
 
@@ -234,6 +237,8 @@ class AppTheme extends DefaultTheme {
 }
 
 abstract class DefaultTheme {
+  final DefaultSizes sizes;
+  DefaultTheme({required this.sizes});
   TextStyle primary({
     Color? color,
     required double size,
@@ -313,4 +318,40 @@ abstract class DefaultTheme {
   TextStyle beautyHead1({Color? color, FontStyle? fontStyle});
   TextStyle beautyHead2({Color? color, FontStyle? fontStyle});
   TextStyle beautyHead3({Color? color, FontStyle? fontStyle});
+
+  Color get buttonOutlineTextColor => buttonOutlineColor;
+  Color get buttonOutlineColor => const Color(0xff484848);
+  List<Color> get buttonDisabledGradientColors => [
+        const Color(0xff208cdf).withOpacity(0.5),
+        const Color(0xff139bda).withOpacity(0.5),
+        const Color(0xff42b9ce).withOpacity(0.5)
+      ];
+
+  Gradient get buttonDisabledGradient => LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.bottomRight,
+        colors: buttonDisabledGradientColors,
+        stops: [0.38, 0.75, 1],
+        transform: GradientRotation(0.611),
+      );
+
+  ButtonStyle textButtonStyle({double? minHeight, Color? color}) => TextButton.styleFrom(
+      primary: color ?? buttonOutlineTextColor,
+      shadowColor: Colors.transparent,
+      textStyle: buttonOutlineTextStyle(),
+      minimumSize: Size(double.minPositive, minHeight ?? sizes.buttonHeight),
+      padding: EdgeInsets.symmetric(horizontal: sizes.buttonHorizontalPadding));
+
+  TextStyle buttonOutlineTextStyle({transparent: false}) => GoogleFonts.lato(
+      color: transparent ? Colors.transparent : buttonOutlineTextColor,
+      fontSize: sizes.buttonTextFontSize,
+      fontWeight: FontWeight.w700);
+
+  Decoration buttonOutlineDecoration({disabled: false}) => disabled
+      ? BoxDecoration(
+          gradient: buttonDisabledGradient,
+          borderRadius: BorderRadius.circular(sizes.buttonRadius),
+          border: Border.all(color: buttonOutlineColor))
+      : BoxDecoration(
+          borderRadius: BorderRadius.circular(sizes.buttonRadius), border: Border.all(color: buttonOutlineColor));
 }

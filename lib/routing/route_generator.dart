@@ -9,13 +9,12 @@ class RouteGenerator {
     if (settings.name == '/') path = Routes.loginPage;
     switch (path) {
       case Routes.loginPage:
-        return PageRouteBuilder(pageBuilder: (_, __, ___) => const LoginPage());
+        return PageRouteBuilder(pageBuilder: (_, __, ___) => const LoginPage(), settings: settings);
       case Routes.homePage:
         return PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const MyHomePage(title: "Navigated Homepage"),
-            settings: const RouteSettings(name: Routes.homePage));
+            pageBuilder: (_, __, ___) => const MyHomePage(title: "Navigated Homepage"), settings: settings);
       default:
-        return PageRouteBuilder(pageBuilder: (_, __, ___) => const ErrorPage());
+        return PageRouteBuilder(pageBuilder: (_, __, ___) => const ErrorPage(), settings: settings);
     }
   }
 }
