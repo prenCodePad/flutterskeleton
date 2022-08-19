@@ -19,8 +19,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var defaultLocale = const Locale('en', 'US');
     return ScreenUtilInit(
-        builder: () => GetMaterialApp(
+        builder: (_, __) => GetMaterialApp(
             title: 'Flutter Skeleton',
+            builder: (context, child) {
+              return MediaQuery(
+                child: child!,
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              );
+            },
             theme: ThemeData(primarySwatch: Colors.blue),
             fallbackLocale: defaultLocale,
             onGenerateRoute: RouteGenerator.generateRoute));
