@@ -104,7 +104,7 @@ class AppTheme extends DefaultTheme {
         decoration: TextDecoration.underline,
         decorationColor: color ?? defaultFontColor,
         color: Colors.transparent,
-        shadows: [Shadow(color: color ?? defaultFontColor, offset: Offset(0, -2))],
+        shadows: [Shadow(color: color ?? defaultFontColor, offset: const Offset(0, -2))],
       );
   @override
   TextStyle linkSmall({Color? color, FontStyle? fontStyle}) => primary(
@@ -116,7 +116,7 @@ class AppTheme extends DefaultTheme {
         decoration: TextDecoration.underline,
         decorationColor: color ?? defaultFontColor,
         color: Colors.transparent,
-        shadows: [Shadow(color: color ?? defaultFontColor, offset: Offset(0, -2))],
+        shadows: [Shadow(color: color ?? defaultFontColor, offset: const Offset(0, -2))],
       );
   @override
   TextStyle body1({Color? color, FontStyle? fontStyle}) =>
@@ -331,23 +331,22 @@ abstract class DefaultTheme {
         begin: Alignment.centerLeft,
         end: Alignment.bottomRight,
         colors: buttonDisabledGradientColors,
-        stops: [0.38, 0.75, 1],
-        transform: GradientRotation(0.611),
+        stops: const [0.38, 0.75, 1],
+        transform: const GradientRotation(0.611),
       );
 
   ButtonStyle textButtonStyle({double? minHeight, Color? color}) => TextButton.styleFrom(
-      primary: color ?? buttonOutlineTextColor,
-      shadowColor: Colors.transparent,
+      foregroundColor: color ?? buttonOutlineTextColor, shadowColor: Colors.transparent,
       textStyle: buttonOutlineTextStyle(),
       minimumSize: Size(double.minPositive, minHeight ?? sizes.buttonHeight),
       padding: EdgeInsets.symmetric(horizontal: sizes.buttonHorizontalPadding));
 
-  TextStyle buttonOutlineTextStyle({transparent: false}) => GoogleFonts.lato(
+  TextStyle buttonOutlineTextStyle({transparent = false}) => GoogleFonts.lato(
       color: transparent ? Colors.transparent : buttonOutlineTextColor,
       fontSize: sizes.buttonTextFontSize,
       fontWeight: FontWeight.w700);
 
-  Decoration buttonOutlineDecoration({disabled: false}) => disabled
+  Decoration buttonOutlineDecoration({disabled = false}) => disabled
       ? BoxDecoration(
           gradient: buttonDisabledGradient,
           borderRadius: BorderRadius.circular(sizes.buttonRadius),

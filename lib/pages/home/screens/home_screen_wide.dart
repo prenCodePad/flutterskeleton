@@ -21,7 +21,7 @@ class HomeScreenWide extends StatelessWidget with AppMixin {
               Obx(() {
                 return Text(
                   '${hc.counter.value}',
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 );
               }),
             ],
